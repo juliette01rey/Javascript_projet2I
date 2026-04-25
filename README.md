@@ -1,2 +1,2 @@
 # Javascript_projet2I
-projet 4eme année Javascript - Juliette REY
+Voici mon projet [4eme année Javascript - Juliette REY]
