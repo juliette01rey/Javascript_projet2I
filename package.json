@@ -1,0 +1,30 @@
+{
+  "name": "markov-keyboard",
+  "version": "1.0.0",
+  "description": "Keyboard prediction using Markov chains with TF-IDF weighting",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "train": "node index.js --train",
+    "test": "node --test",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "markov",
+    "nlp",
+    "keyboard",
+    "prediction",
+    "french"
+  ],
+  "author": "",
+  "license": "MIT"
+}
