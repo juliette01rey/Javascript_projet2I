@@ -1,0 +1,6 @@
+node_modules/
+data/markov-model.json
+data/dictionary.json
+data/corpus.txt
+.DS_Store
+*.log
