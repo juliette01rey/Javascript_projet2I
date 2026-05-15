@@ -5,7 +5,7 @@ const MODEL_PATH = "./data/markov-model.json";
 const CORPUS_PATH = "./data/corpus.txt";
 
 const FUNCTION_WORDS = new Set([
-  "je", "tu", "il", "elle", "on", "nous"," vous", "ils", "elles",
+  "je", "tu", "il", "elle", "on", "nous", "vous", "ils", "elles",
   "lui", "eux",
   "le", "la", "les", 
   "un", "une", "des", 
