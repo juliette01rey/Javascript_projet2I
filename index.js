@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync, existsSync } from "fs";
+import * as readline from "readline";
 
 const DICT_SIZE = 20_000;
 const MODEL_PATH = "./data/markov-model.json";
@@ -108,6 +109,7 @@ export function createPredictor(modelPath = MODEL_PATH) {
   };
 }
 
+
 const isTrainMode = process.argv.includes("--train");
 
 if (isTrainMode) {
@@ -130,11 +132,31 @@ if (isTrainMode) {
     console.error("Aucun modèle trouvé. Lance d'abord : npm run train");
     process.exit(1);
   }
+
   const predictor = createPredictor();
-  const testWords = ["bonjour", "maison", "et", "voiture", "le"];
-  console.log("Prédictions top 5");
-  for (const word of testWords) {
-    const suggestions = predictor.top5(word);
-    console.log(`"${word}" → [${suggestions.join(", ")}]`);
-  }
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  const ask = () => {
+    rl.question("\nEntre un mot (ou 'quitter' pour arrêter) : ", (input) => {
+      const word = input.trim().toLowerCase();
+      if (word === "quitter") {
+        console.log("Au revoir !");
+        rl.close();
+        return;
+      }
+      const suggestions = predictor.top5(word);
+      if (suggestions.length === 0) {
+        console.log(`"${word}" → aucune suggestion (mot pas dans la bibliothèque)`);
+      } else {
+        console.log(`"${word}" → [${suggestions.join(", ")}]`);
+      }
+      ask();
+    });
+  };
+
+  console.log("Modèle chargé. Mot choisit: ");
+  ask();
 }
